@@ -10,19 +10,20 @@ import jakarta.persistence.Table;
 @Table(name = "tb_previdencia")
 public class PrevidenciaModel {
 
-    // como o usuario teoricamente ja estará em um login nao será necessario criar um id --> acho //
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     private int idadeInicial;
     private int idadeAposentadoria;
     private double valorInvestir;
+    public PrevidenciaModel previdenciaModel;
+    // apagamos o user do tipo "Classe" //
     // assim como nao tenho certeza se isso daqui é necessario ja que da para se fazer com o front //
     
     public PrevidenciaModel() {
     }
 
-    public PrevidenciaModel(int idadeInicial, int idadeAposentadoria, double valorInvestir) {
+    public PrevidenciaModel(int idadeInicial, int idadeAposentadoria, double valorInvestir, PrevidenciaModel previdenciaModel) {
         this.idadeInicial = idadeInicial;
         this.idadeAposentadoria = idadeAposentadoria;
         
@@ -51,6 +52,14 @@ public class PrevidenciaModel {
 
     public void setValorInvestir(double valorInvestir) {
         this.valorInvestir = valorInvestir;
+    }
+
+    public PrevidenciaModel getPrevidenciaModel() {
+        return previdenciaModel;
+    }
+
+    public void setPrevidenciaModel(PrevidenciaModel previdenciaModel) {
+        this.previdenciaModel = previdenciaModel;
     }
 
 }
