@@ -1,0 +1,23 @@
+package start.Controller;
+
+import org.hibernate.mapping.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import start.Model.RelatorioSonho;
+import start.Service.RelatorioSonhoService;
+
+@RestController
+@RequestMapping("/relatorios")
+public class RelatorioController {
+
+    @Autowired
+    private RelatorioSonhoService relatorioSonhoService;
+
+    @GetMapping("/sonhos")
+    public List<RelatorioSonho> getRelatorioSonhos() {
+        return relatorioSonhoService.gerarRelatorio();
+    }
+}
