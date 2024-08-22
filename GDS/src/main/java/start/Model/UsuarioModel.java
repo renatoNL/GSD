@@ -35,19 +35,8 @@ private String password;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<GerenciadoraMensal> gerenciadoraMensal = new ArrayList<>();
 
-public UsuarioModel(Long id, String name, String cpf, LocalDate dataNascimento, String celular, String email,
-            String password, List<Sonho> sonhos, List<Quitacao> quitacoes,
-            List<GerenciadoraMensal> gerenciadoraMensal) {
-        this.id = id;
-        this.name = name;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.celular = celular;
-        this.email = email;
-        this.password = password;
-        this.sonhos = sonhos;
-        this.quitacoes = quitacoes;
-        this.gerenciadoraMensal = gerenciadoraMensal;
+
+public UsuarioModel() {
     }
 
 public Long getId() {
