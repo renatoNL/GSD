@@ -3,12 +3,13 @@ package start.Model;
 
 
 import java.time.YearMonth;
-import java.util.Optional;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,17 +25,22 @@ public class GerenciadoraMensal {
     private Double despesasVariaveis;
     private Double saldoFinal;
 
-    public GerenciadoraMensal() {
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
+    private UsuarioModel usuario;
 
     public GerenciadoraMensal(Long id, YearMonth masAno, Double rendaTotal, Double despesasFixas,
-            Double despesasVariaveis, Double saldoFinal) {
+            Double despesasVariaveis, Double saldoFinal, UsuarioModel usuario) {
         this.id = id;
         this.masAno = masAno;
         this.rendaTotal = rendaTotal;
         this.despesasFixas = despesasFixas;
         this.despesasVariaveis = despesasVariaveis;
         this.saldoFinal = saldoFinal;
+        this.usuario = usuario;
+    }
+
+    public GerenciadoraMensal() {
     }
 
     public Long getId() {
@@ -85,51 +91,12 @@ public class GerenciadoraMensal {
         this.saldoFinal = saldoFinal;
     }
 
-    public void calcularSaldoFinal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcularSaldoFinal'");
+    public UsuarioModel getUsuario() {
+        return usuario;
     }
 
-    public GerenciadoraMensal save(GerenciadoraMensal gerenciadora) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    public void setUsuario(UsuarioModel usuario) {
+        this.usuario = usuario;
     }
 
-    public Optional<GerenciadoraMensal> findByMesAno(YearMonth mesAno) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByMesAno'");
-    }
-
-    public boolean existsById(Long id2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'existsById'");
-    }
-
-    public void deleteById(Long id2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
-    }
-
-    public GerenciadoraMensal criarGerenciadoraMensal(GerenciadoraMensal gerenciadora) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'criarGerenciadoraMensal'");
-    }
-
-    public Optional<GerenciadoraMensal> buscarPorMesAno(YearMonth yearMonth) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorMesAno'");
-    }
-
-    public GerenciadoraMensal atualizarGerenciadoraMensal(Long id2, GerenciadoraMensal gerenciadoraAtualizada) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarGerenciadoraMensal'");
-    }
-
-    public boolean deletarGerenciadoraMensal(Long id2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletarGerenciadoraMensal'");
-    }
-
-
-    
 }

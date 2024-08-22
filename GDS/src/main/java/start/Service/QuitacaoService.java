@@ -1,5 +1,7 @@
 package start.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,9 +57,9 @@ public class QuitacaoService {
         Optional<Quitacao> dividaOptional = quitacaoRepository.findById(id);
         if (dividaOptional.isPresent()) {
             Quitacao dividaExistente = dividaOptional.get();
-            Double valorAtualizado = dividaExistente.calcularValorAtualizado();
+            Double valorAtualizado = calcularValorAtualizado(dividaExistente);
             dividaExistente.setValorPago(dividaExistente.getValorPago() + valorPago);
-
+    
             if (dividaExistente.getValorPago() >= valorAtualizado) {
                 dividaExistente.setQuitada(true);
             }
@@ -65,5 +67,24 @@ public class QuitacaoService {
         }
         return null;
     }
+
+    public Double calcularValorAtualizado(Quitacao divida) {
+        Double valorTotal = divida.getValorTotal();
+        Double taxaJuros = divida.getTaxaJuros();
+        Double valorPago = divida.getValorPago();
+        Integer diasVencidos = calcularDiasVencidos(divida.getDataVencimento());
+    
+        Double valorAtualizado = valorTotal + (valorTotal * taxaJuros * diasVencidos / 365);
+    
+        return valorAtualizado;
+    }
+
+    public Integer calcularDiasVencidos(Date dataVencimento) {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(dataVencimento);
+    Integer diasVencidos = calendar.get(Calendar.DAY_OF_YEAR) - Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+
+    return diasVencidos;
+}
 
 }

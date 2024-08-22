@@ -9,39 +9,57 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.YearMonth;
-import java.util.Optional;
+import java.util.List;
 import start.Model.GerenciadoraMensal;
 import start.Service.GerenciadoraMensalService;
 
 @RestController
-@RequestMapping("/gerenciadora")
+@RequestMapping("/gerenciadoraMensal")
 public class GerenciadoraMensalController {
 
     @Autowired
     private GerenciadoraMensalService gerenciadoraMensalService;
 
-    @PostMapping
-    public GerenciadoraMensal criarGerenciadoraMensal(@RequestBody GerenciadoraMensal gerenciadora) {
-        return gerenciadoraMensalService.criarGerenciadoraMensal(gerenciadora);
+    @GetMapping("/mes/{month}")
+    public List<GerenciadoraMensal> buscarPorMes(@PathVariable int month) {
+        return gerenciadoraMensalService.buscarPorMes(month);
     }
 
-    @GetMapping("/{mesAno}")
-    public Optional<GerenciadoraMensal> buscarPorMesAno(@PathVariable String mesAno) {
-        YearMonth yearMonth = YearMonth.parse(mesAno);
-        return gerenciadoraMensalService.buscarPorMesAno(yearMonth);
+    @GetMapping("/ano/{year}")
+    public List<GerenciadoraMensal> buscarPorAno(@PathVariable int year) {
+        return gerenciadoraMensalService.buscarPorAno(year);
     }
 
-    @PutMapping("/{id}")
-    public GerenciadoraMensal atualizarGerenciadoraMensal(@PathVariable YearMonth id, @RequestBody GerenciadoraMensal gerenciadoraAtualizada) {
-        return gerenciadoraMensalService.atualizarGerenciadoraMensal(id, gerenciadoraAtualizada);
+    @GetMapping("/mesAno")
+    public List<GerenciadoraMensal> buscarPorMesEAno(@RequestParam YearMonth masAno) {
+        return gerenciadoraMensalService.buscarPorMesEAno(masAno);
     }
 
-    @DeleteMapping("/{id}")
-    public boolean deletarGerenciadoraMensal(@PathVariable Long id) {
-        return gerenciadoraMensalService.deletarGerenciadoraMensal(id);
+    // Endpoint para criar um novo registro de GerenciadoraMensal
+    @PostMapping("/criar")
+    public GerenciadoraMensal criarGerenciadoraMensal(@RequestBody GerenciadoraMensal gerenciadoraMensal) {
+        return gerenciadoraMensalService.criarGerenciadoraMensal(gerenciadoraMensal);
     }
 
+    // Endpoint para atualizar um registro existente de GerenciadoraMensal
+    @PutMapping("/atualizar/{id}")
+    public GerenciadoraMensal atualizarGerenciadoraMensal(@PathVariable Long id, @RequestBody GerenciadoraMensal gerenciadoraMensal) {
+        return gerenciadoraMensalService.atualizarGerenciadoraMensal(id, gerenciadoraMensal);
+    }
+
+    // Endpoint para deletar um registro de GerenciadoraMensal
+    @DeleteMapping("/deletar/{id}")
+    public void deletarGerenciadoraMensal(@PathVariable Long id) {
+        gerenciadoraMensalService.deletarGerenciadoraMensal(id);
+    }
+
+    // Endpoint para calcular o progresso em relação ao saldo final e às metas
+    @GetMapping("/progresso/{id}")
+    public double calcularProgresso(@PathVariable Long id) {
+        return gerenciadoraMensalService.calcularProgresso(id);
+    }
 }

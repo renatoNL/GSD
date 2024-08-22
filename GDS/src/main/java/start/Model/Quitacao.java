@@ -3,9 +3,12 @@ package start.Model;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "tb_quitacao")
@@ -19,12 +22,17 @@ public class Quitacao {
     private Double valorTotal;
     private Double valorPago;
     private Double taxaJuros;
-    private LocalDate dataVencimento;
+    private Date dataVencimento;
     private Boolean quitada;
 
-    public Quitacao() {}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
+    private UsuarioModel usuario;
 
-    public Quitacao(Long id, String descricao, Double valorTotal, Double valorPago, Double taxaJuros, LocalDate dataVencimento, Boolean quitada) {
+    
+
+    public Quitacao(Long id, String descricao, Double valorTotal, Double valorPago, Double taxaJuros,
+            Date dataVencimento, Boolean quitada, UsuarioModel usuario) {
         this.id = id;
         this.descricao = descricao;
         this.valorTotal = valorTotal;
@@ -32,6 +40,10 @@ public class Quitacao {
         this.taxaJuros = taxaJuros;
         this.dataVencimento = dataVencimento;
         this.quitada = quitada;
+        this.usuario = usuario;
+    }
+
+    public Quitacao() {
     }
 
     public Long getId() {
@@ -74,12 +86,12 @@ public class Quitacao {
         this.taxaJuros = taxaJuros;
     }
 
-    public LocalDate getDataVencimento() {
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(LocalDate dataVencimento) {
-        this.dataVencimento = dataVencimento;
+    public void setDataVencimento(Date date) {
+        this.dataVencimento = date;
     }
 
     public Boolean getQuitada() {
@@ -90,15 +102,11 @@ public class Quitacao {
         this.quitada = quitada;
     }
 
-    public Double calcularValorAtualizado() {
-        int meses = calcularMesesAtraso();
-        return valorTotal * Math.pow(1 + taxaJuros, meses);
-    }
-    private int calcularMesesAtraso() {
-        if (LocalDate.now().isAfter(dataVencimento)) {
-            return LocalDate.now().getMonthValue() - dataVencimento.getMonthValue();
-        }
-        return 0;
+    public UsuarioModel getUsuario() {
+        return usuario;
     }
 
+    public void setUsuario(UsuarioModel usuario) {
+        this.usuario = usuario;
+    }
 }

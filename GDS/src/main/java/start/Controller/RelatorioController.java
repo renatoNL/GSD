@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import start.Model.RelatorioSonho;
-import start.Service.RelatorioSonhoService;
-
 @RestController
 @RequestMapping("/relatorios")
 public class RelatorioController {
