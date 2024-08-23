@@ -31,12 +31,12 @@ public class UsuarioService {
         Optional<UsuarioModel> usuarioOptional = usuarioRepository.findById(id);
         if (usuarioOptional.isPresent()) {
             UsuarioModel usuarioExistente = usuarioOptional.get();
-            usuarioExistente.setNome(usuarioAtualizado.getNome());
+            usuarioExistente.setName(usuarioAtualizado.getName());
             usuarioExistente.setCpf(usuarioAtualizado.getCpf());
             usuarioExistente.setDataNascimento(usuarioAtualizado.getDataNascimento());
             usuarioExistente.setCelular(usuarioAtualizado.getCelular());
             usuarioExistente.setEmail(usuarioAtualizado.getEmail());
-            usuarioExistente.setSenha(usuarioAtualizado.getSenha());
+            usuarioExistente.setPassword(usuarioAtualizado.getPassword());
             return usuarioRepository.save(usuarioExistente);
         }
         return null;
