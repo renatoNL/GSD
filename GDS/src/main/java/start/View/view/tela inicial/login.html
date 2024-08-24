@@ -5,19 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
 
     <div>
-        <form action="login">
-            <label>Username</label>
-            <input type="email">
-            <label>Password</label>
-            <input type="password">
-            <button> Entrar </button>
-            <a href="cadastro.html"><button> Criar conta </button></a>
-            <!-- o botao nao esta direcionando ao canto correto, só vai para canto nenhum ??? -->
+        <section class="suporte-login"></section>
+    </div>
+
+    <div class="alinhar-forms">
+        <form class="forms-login" action="login">
+            <h3> LOGIN </h3>
+            <div class="alinnhar-ao-centro">
+                <div class="alinhar-inputs-login">
+                    <label>Username</label>
+                    <input value="" class="arredondar-input">
+                </div>
+                <div class="alinhar-inputs-login">
+                    <label>Password</label>
+                    <input value="" class="arredondar-input">
+                </div>
+                <div>
+                    <button class="entrar-bot-login"> Entrar </button>
+                </div>
+                <div>
+                   <p>
+                    não tem conta? <span> <a href="cadastro.html" class="criar-conta-login"> criar conta</a> </span>
+                   </p> 
+                        
+                    
+                </div>
+                <!-- o botao nao esta direcionando ao canto correto, só vai para canto nenhum ??? -->
+            </div>
         </form>
     </div>
 </body>

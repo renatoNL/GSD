@@ -20,7 +20,6 @@ nav {
 body {
     color: black;
     background-color: #f0f0f0;
-
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -53,7 +52,7 @@ a {
 a:hover {
     display: flex;
     color: darkgreen;
-    text-decoration: underline; 
+    text-decoration: underline;
     font-weight: bold;
     text-decoration: none;
 }
@@ -73,14 +72,14 @@ h3 {
     text-align: center;
 }
 
-h4{
+h4 {
     text-align: center;
 }
 
 .title>h1>span {
     color: #49A601;
 
-    
+
 }
 
 .title {
@@ -160,8 +159,8 @@ p {
     margin-left: 150px;
 }
 
-.botao1{
-    background-color: #49A601;
+.botao1 {
+    background-color: #2B8F6F;
     width: 150px;
     height: 50px;
     border: 1px solid black;
@@ -169,19 +168,23 @@ p {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.botaozin1{
-    margin-left: 45%;
+.botaozin1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
 }
 
 .botao1:hover {
-    background-color: #FFD700; 
-    transform: scale(1.05); 
+    background-color: #8afd32;
+    transform: scale(1.05);
 }
 
-.bloquinho{
-    margin-left: 100px;
-    display: flex; 
-    margin-top: 100px; /* tirar isso daqui quando ajeitar o botao*/
+.bloquinho {
+    
+    display: flex;
+    margin-top: 100px;
+    /* tirar isso daqui quando ajeitar o botao */
     border: 1px solid black;
     align-items: center;
     text-align: center;
@@ -190,35 +193,111 @@ p {
     height: 500px;
     background-color: #C5E1C8;
     scroll-margin-block-end: 3000rem;
+    margin-bottom: 60px;
 
-    & .text-bloco{
-        margin: 80px;
+    & .text-bloco {
+        margin: 20px 40px;
     }
 }
-.main-alinhar-bloquinhos-ao-centro{
-    display: flex; 
-    justify-content: center; 
-    
+
+.main-alinhar-bloquinhos-ao-centro {
+    display: flex;
+    justify-content: space-evenly;
     
 }
 
-.forms-sonho{
-    margin-left: 100px;
-    display: flex; 
-    margin-top: 100px; 
-    border: 1px solid black;
-    align-items: center;
+.do-planer{
+    margin-top: 180px;
+    margin-left: 250px;
+}
+
+.forms-sonho {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
     border-radius: 30px;
-    width: 450px;
-    height: 500px;
+    width: 350px;
+    height: 400px;
     background-color: #C5E1C8;
-    scroll-margin-block-end: 3000rem;
+    margin-bottom: 50px;
+    box-shadow: rgba(0, 0, 0, 0.788) 2px 2px 2px;
+    
 
-    & .text-bloco{
-        margin: 80px;
+
+    & .title-sonho {
+        font-size: 18px;
+        width: 250px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 45px;
     }
+
+    & .inserir-sonho {
+        display: flex;
+        flex-direction: column;
+
+        text-align: start;
+        width: 207px;
+
+        margin-bottom: 30px;
+
+    }
+
+    & .inserir-sonho>input {
+        border-radius: 7px;
+        height: 25px;
+        box-shadow: rgba(0, 0, 0, 0.479) 3px 3px 3px;
+    }
+
+    & .color-mudar {
+        background-color: #c9c9c9a6;
+    }
+
+    & .color-mudar:focus {
+        background-color: #f0f0f0;
+    }
+
+
+
+    & .botao-forms-sonho {
+        border: 1px solid black;
+        border-radius: 30px;
+        width: 100px;
+        height: 35px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: rgba(0, 0, 0, 0.788) 2px 2px 2px;
+    }
+
+    & .botao-forms-sonho:hover {
+        background-color: #2B8F6F;
+        transform: scale(1.05);
+    }
+
+    & .diminuir-fonte {
+        font-size: 12px;
+    }
+
+}
+.alinhar-imagem-bloco {
+    display: flex;
+    align-items: center;
+    
+    justify-content: space-evenly;
 }
 
+.gerenciadora-titulo { /* como que deixa isso alinhado ao centro */
+    display: flex;
+    margin: 100px 200px;
+    text-align: center;
+    
+    color: black;
+}
 
-
+.espaço {
+    margin-top: 60px;
+}

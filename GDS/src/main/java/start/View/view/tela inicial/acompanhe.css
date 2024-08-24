@@ -1,1 +1,114 @@
-Acompanhando
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #D3E9AB;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    display: flex;
+    gap: 20px;
+    background-attachment: fixed;
+}
+
+h3 {
+    border: 1p;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 16px;
+    width: 200%;
+}
+
+.agrupamento {
+    display: flex;
+    gap: 3rem;
+
+}
+
+ul>li>a {
+    display: flex;
+    text-align: center;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    /* para tirar linhas de "links" */
+}
+
+a:hover {
+    display: flex;
+    color: darkgreen;
+    text-decoration: underline;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.loginBotao>a>button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    width: 9rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    border: none;
+    background-color: #A2D488;
+}
+
+.loginBotao>a>button>img {
+    width: 45px;
+}
+
+footer {
+    display: flex;
+    background-color: #D3E9AB;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    padding: 20px;
+    height: 70px;
+    justify-content: center;
+}
+
+.tentativa{
+    margin-top: 50px;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #CFE4C5;
+    margin-left: 35%; /* ajeitar esta coisa */
+    margin-bottom: 50px;
+    
+    & .alinhar-acompanhamento {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    & .alinhar-textos {
+        
+        margin-top: 40px;
+        text-align: center;
+          
+    }
+
+    & .tentativa1 {
+        display: flex;
+        border: 1px solid black;
+        border-radius: 50px;
+        background-color: #4FD91F;
+        width: 300px;
+        margin-left: 50px;
+    }
+}
+
