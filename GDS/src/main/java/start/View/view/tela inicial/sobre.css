@@ -4,6 +4,36 @@
     box-sizing: border-box;
 }
 
+h1 {
+    color: #376721;
+      padding-left: 50px;
+      height: 55px;
+
+
+&.left {
+    text-align: left;
+}
+
+&.right {
+    text-align: right;
+    margin-right: 700px;
+    transform: translateY(-400px);
+}
+}
+
+p {
+    margin-top: 0,5px;
+    width: 650px;
+    padding-left: 50px;
+
+&.left2 {
+    text-align: left;
+}   
+
+&.teste2 {
+    display: flex;
+}
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
