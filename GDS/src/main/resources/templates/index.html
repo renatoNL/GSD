@@ -9,6 +9,7 @@
     <title>Gestão de Sonhos</title>
     <link rel="website icon" type="png" href="imagens/logo-removebg-preview.png"> <!-- ajeitar o tamanho da logo -->
     <link th:href="@{../static/css/index.css}" href="../static/css/index.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" th:src="@{../JS/index.JS}"></script>
 </head>
 
 <body>
@@ -144,7 +145,7 @@
                 <section>
                     <div class="alinhar-imagem-bloco">
                         <img src="imagens/Design sem nome (8) 1.png" alt="">
-                        <form th:action="@{/sonho}" class="forms-sonho" th:object="${sonho}" method="post">
+                        <form th:action="@{/sonho}" class="forms-sonho" id="forms-sonho" th:object="${sonho}" method="post">
                             <div class=""> <!-- fazer dessa classe a classe que vai organizar-->
                                 <div class="title-sonho">
                                     <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>
@@ -166,8 +167,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="gestaodesonhos.html"><button class="botao-forms-sonho" type="submit"> Simule
-                                    </button></a>
+                                <a href="/gestaodesonho.html"><button class="botao-forms-sonho" type="submit"> Simule </button></a>
                             </div>
                         </form>
                     </div>
@@ -199,5 +199,7 @@
     </div>
 
 </body>
+
+
 
 </html>
