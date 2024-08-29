@@ -12,9 +12,9 @@ import java.util.List;
 @Repository
 public interface GerenciadoraMensalRepository extends JpaRepository<GerenciadoraMensal, Long> {
 
-    List<GerenciadoraMensal> findByMasAnoMonth(int month);
+    /* List<GerenciadoraMensal> findByMasAnoMonth(int month);
 
-    List<GerenciadoraMensal> findByMasAnoYear(int year);
+    List<GerenciadoraMensal> findByMasAnoYear(int year); */
 
     List<GerenciadoraMensal> findByMasAno(YearMonth masAno);
 }

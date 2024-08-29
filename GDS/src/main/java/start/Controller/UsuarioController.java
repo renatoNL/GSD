@@ -24,11 +24,12 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public List<UsuarioModel> listarUsuario (){
+    public List<UsuarioModel> listarUsuario() {
         return usuarioService.listarUsuario();
     }
+
     @PostMapping
-    public UsuarioModel CriarUsuario(@RequestBody UsuarioModel usario){
+    public UsuarioModel CriarUsuario(@RequestBody UsuarioModel usario) {
         return usuarioService.criarUsuario(usario);
     }
 
@@ -43,19 +44,11 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void DeletarUsiario(@PathVariable Long id){
+    public void DeletarUsiario(@PathVariable Long id) {
         usuarioService.deletarUsuario(id);
     }
-    
-    @RestController
-@RequestMapping("/usuario")
-public class UserController {
-    @GetMapping
-    public ResponseEntity<String> getUsuario(){
-        return ResponseEntity.ok("sucesso!");
-    }
+
 }
-    }
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
 <!-- feito -->
 
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Sonhos</title> <!-- Se muda o nome da pagina de acordo com a mudança de paginas? -->
     <link rel="website icon" type="png" href="imagens/logo-removebg-preview.png"> <!-- ajeitar o tamanho da logo -->
-    <link rel="stylesheet" href="acompanhe.css">
+    <link th:href="@{../static/css/quitacao.css}" href="../static/css/quitacao.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -44,30 +44,33 @@
     <div>
         <section>
             <form action="forms">
-                <h3> GERENCIE SEUS GASTOS MENSAIS </h3>
+                <h3> QUITE SUAS DÍVIDAS COM A GDS </h3>
                 <br>
                 <label>Informe sua renda</label>
                 <input type="text">
                 <!-- se uma variavel do tipo int esta sendo declarada como "text" ela vira String e nao executa soma? -->
-                <br>
-                <label>Despesas Fixas</label>
+                <label>Valor total da dívida</label>
+                <input type="text">
+                <label>Quantidade de parcelas</label>
                 <input type="text">
                 <br>
-                <label>Despesas Variadas</label>
+                <label>Forma de pagamento</label>
                 <input type="text">
                 <br>
-                <button>CONFIRMAR</button> <!-- nao gostei da palavra usada no botao-->
+                <label>Prazo</label>
+                <input type="date">
+                <br>
+                <button>Avançar</button> <!-- nao gostei da palavra usada no botao-->
             </form>
         </section>
         <section>
-            <h2>SEUS GASTOS REPRESENTAM: </h2> <!-- add imagem -->
+            <h3>SAIBA A IMPORTANCIA</h3> <!-- add imagem -->
             <br>
-            <p> Analisando o extrato bancário do último mês, observamos que 40% dos gastos foram destinados a despesas
-                fixas, como aluguel e contas de serviços. Os investimentos representaram 20% do total, refletindo um
-                compromisso com o crescimento financeiro futuro. Já as despesas variáveis, como lazer e alimentação,
-                corresponderam a 30%, enquanto os 10% restantes foram poupados para emergências. </p>
+            <p> Quitar as dívidas é o primeiro passo para conquistar a saúde financeira. Além de com o nome limpo, ao
+                quitar suas dívidas surge a oportunidade de controlar mais as finanças, estabelecer metas e ter mais
+                leveza no orçamento. Dessa forma, é possível investir parte da sua renda mensal para
+                conquistar objetivos como fazer um financiamento, trocar de carro ou mesmo fazer uma viagem. </p>
             <br>
-
         </section>
     </div>
     <footer>

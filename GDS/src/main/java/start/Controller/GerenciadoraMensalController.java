@@ -1,5 +1,7 @@
 package start.Controller;
 
+import java.time.YearMonth;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.YearMonth;
-import java.util.List;
 import start.Model.GerenciadoraMensal;
 import start.Service.GerenciadoraMensalService;
 
@@ -24,7 +24,7 @@ public class GerenciadoraMensalController {
     @Autowired
     private GerenciadoraMensalService gerenciadoraMensalService;
 
-    @GetMapping("/mes/{month}")
+    /* @GetMapping("/mes/{month}")
     public List<GerenciadoraMensal> buscarPorMes(@PathVariable int month) {
         return gerenciadoraMensalService.buscarPorMes(month);
     }
@@ -32,7 +32,7 @@ public class GerenciadoraMensalController {
     @GetMapping("/ano/{year}")
     public List<GerenciadoraMensal> buscarPorAno(@PathVariable int year) {
         return gerenciadoraMensalService.buscarPorAno(year);
-    }
+    } */
 
     @GetMapping("/mesAno")
     public List<GerenciadoraMensal> buscarPorMesEAno(@RequestParam YearMonth masAno) {

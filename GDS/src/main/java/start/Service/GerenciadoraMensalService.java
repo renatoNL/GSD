@@ -16,14 +16,14 @@ public class GerenciadoraMensalService {
         @Autowired
         private GerenciadoraMensalRepository gerenciadoraMensalRepository;
     
-        public List<GerenciadoraMensal> buscarPorMes(int month) {
+        /* public List<GerenciadoraMensal> buscarPorMes(int month) {
             return gerenciadoraMensalRepository.findByMasAnoMonth(month);
         }
     
         public List<GerenciadoraMensal> buscarPorAno(int year) {
             return gerenciadoraMensalRepository.findByMasAnoYear(year);
         }
-    
+    */
         public List<GerenciadoraMensal> buscarPorMesEAno(YearMonth masAno) {
             return gerenciadoraMensalRepository.findByMasAno(masAno);
         }
