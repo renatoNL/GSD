@@ -17,6 +17,22 @@ nav {
     background-attachment: fixed;
 }
 
+.dropdown-menu {
+    position: absolute;
+    border: 1px solid black;
+    display: none;
+    background-color: #A2D488;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: black;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 body {
     color: black;
     background-color: #f0f0f0;
@@ -301,3 +317,4 @@ p {
 .espaço {
     margin-top: 60px;
 }
+

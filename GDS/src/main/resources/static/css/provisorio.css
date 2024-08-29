@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 nav {
     background-color: #D3E9AB;
     height: 70px;
@@ -69,7 +73,8 @@ footer {
     display: flex;
     background-color: #D3E9AB;
     border: 1px solid rgba(0, 0, 0, 0.500);
-    padding: 20px;
     height: 70px;
     justify-content: center;
+    width: 100%;
+    
 }

@@ -23,7 +23,7 @@ private String name;
 private String cpf; //add chave unica
 private LocalDate dataNascimento;
 private String celular;
-private String email; //add chave unica //verificar o email
+private String email; //add chave unica // verificar o email
 private String password;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)

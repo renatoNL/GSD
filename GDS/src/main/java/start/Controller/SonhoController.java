@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import start.Model.Sonho;
 import org.springframework.web.bind.annotation.RestController;
 
+import start.Model.Sonho;
 import start.Service.SonhoService;
 
 @RestController
@@ -22,7 +22,7 @@ public class SonhoController {
     @Autowired
     private SonhoService sonhoService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<Sonho> getAllSonhos() {
         return sonhoService.findAll();
     }
@@ -32,7 +32,7 @@ public class SonhoController {
         return sonhoService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/")
     public Sonho createSonho(@RequestBody Sonho sonho) {
         return sonhoService.createSonho(sonho);
     }

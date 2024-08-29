@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
 <!-- tela inicial --> <!-- feito -->
 
@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Sonhos</title>
     <link rel="website icon" type="png" href="imagens/logo-removebg-preview.png"> <!-- ajeitar o tamanho da logo -->
-    <link rel="stylesheet" href="index.css">
+    <link th:href="@{../static/css/index.css}" href="../static/css/index.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" th:src="@{../JS/index.JS}"></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
         <nav>
             <ul>
                 <li>
-                    <a> <img src="./imagens/logo-removebg-preview.png" alt="Logo" height="50"
+                    <a href="index.html"> <img src="./imagens/logo-removebg-preview.png" alt="Logo" height="50"
                             class="d-inline-block align-text-top"> </a> <!-- add a logo -->
                 </li>
                 <div class="agrupamento">
@@ -26,8 +27,14 @@
                     <li>
                         <a href="acompanhe.html"> Acompanhe </a>
                     </li>
-                    <li>
+                    <li class="dropdown">
                         <a> Ferramentas </a> <!-- add efeito on click e aparecer as ferramentas -->
+                        <div class="dropdown-menu">
+                            <a href="gestaodesonhos.html">Gestão de Sonhos</a>
+                            <a href="gestaomensal.html">Planejamento mensal</a>
+                            <a href="quitacao.html">Quitação</a>
+                            <a href="investir.html">Investir</a>
+                        </div>
                     </li>
                     <li>
                         <a href="educa.html"> Educação Financeira </a>
@@ -135,33 +142,32 @@
             </div>
 
             <div>
-
                 <section>
-
                     <div class="alinhar-imagem-bloco">
                         <img src="imagens/Design sem nome (8) 1.png" alt="">
-                        <form action="GDS" class="forms-sonho">
+                        <form th:action="@{/sonho}" class="forms-sonho" id="forms-sonho" th:object="${sonho}" method="post">
                             <div class=""> <!-- fazer dessa classe a classe que vai organizar-->
                                 <div class="title-sonho">
                                     <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>
                                 </div>
                                 <div class="inserir-sonho">
                                     <label for="dream" class="diminuir-fonte">Sonho:</label>
-                                    <input type="text" id="dream" name="dream" class="color-mudar">
+                                    <input type="text" id="dream" name="dream" class="color-mudar"
+                                        th:field="*{descricao}">
                                 </div>
 
                                 <div class="inserir-sonho">
                                     <label for="valor" class="diminuir-fonte">Valor:</label>
-                                    <input type="text" id="valor" name="valor" class="color-mudar">
+                                    <input type="text" id="valor" name="valor" class="color-mudar" th:field="*{valor}">
                                 </div>
 
                                 <div class="inserir-sonho">
                                     <label for="prazo" class="diminuir-fonte">Prazo:</label>
-                                    <input type="date" id="prazo" name="prazo" class="color-mudar">
+                                    <input type="date" id="prazo" name="prazo" class="color-mudar" th:field="*{prazo}">
                                 </div>
                             </div>
                             <div>
-                                <button class="botao-forms-sonho"> Simule </button>
+                                <a href="/gestaodesonho.html"><button class="botao-forms-sonho" type="submit"> Simule </button></a>
                             </div>
                         </form>
                     </div>
@@ -193,5 +199,7 @@
     </div>
 
 </body>
+
+
 
 </html>

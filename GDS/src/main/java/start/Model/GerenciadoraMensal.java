@@ -19,7 +19,7 @@ public class GerenciadoraMensal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private YearMonth masAno;
+    private YearMonth masAno; // discutir //
     private Double rendaTotal;
     private Double despesasFixas;
     private Double despesasVariaveis;
