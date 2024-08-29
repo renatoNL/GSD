@@ -39,25 +39,18 @@ public class GerenciadoraMensalController {
         return gerenciadoraMensalService.buscarPorMesEAno(masAno);
     }
 
-    // Endpoint para criar um novo registro de GerenciadoraMensal
     @PostMapping("/criar")
     public GerenciadoraMensal criarGerenciadoraMensal(@RequestBody GerenciadoraMensal gerenciadoraMensal) {
         return gerenciadoraMensalService.criarGerenciadoraMensal(gerenciadoraMensal);
     }
-
-    // Endpoint para atualizar um registro existente de GerenciadoraMensal
     @PutMapping("/atualizar/{id}")
     public GerenciadoraMensal atualizarGerenciadoraMensal(@PathVariable Long id, @RequestBody GerenciadoraMensal gerenciadoraMensal) {
         return gerenciadoraMensalService.atualizarGerenciadoraMensal(id, gerenciadoraMensal);
     }
-
-    // Endpoint para deletar um registro de GerenciadoraMensal
     @DeleteMapping("/deletar/{id}")
     public void deletarGerenciadoraMensal(@PathVariable Long id) {
         gerenciadoraMensalService.deletarGerenciadoraMensal(id);
     }
-
-    // Endpoint para calcular o progresso em relação ao saldo final e às metas
     @GetMapping("/progresso/{id}")
     public double calcularProgresso(@PathVariable Long id) {
         return gerenciadoraMensalService.calcularProgresso(id);

@@ -86,5 +86,4 @@ public class QuitacaoService {
 
     return diasVencidos;
 }
-
 }

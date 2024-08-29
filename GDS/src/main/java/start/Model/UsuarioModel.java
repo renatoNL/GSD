@@ -118,6 +118,4 @@ public List<GerenciadoraMensal> getGerenciadoraMensal() {
 public void setGerenciadoraMensal(List<GerenciadoraMensal> gerenciadoraMensal) {
     this.gerenciadoraMensal = gerenciadoraMensal;
 }
-
-
 }
