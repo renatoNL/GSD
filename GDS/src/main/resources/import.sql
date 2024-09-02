@@ -1,1 +1,0 @@
-insert into tb_usuario(name, email, password) values ('admin', 'admin@gmail.com', '123456');

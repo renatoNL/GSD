@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import start.Model.Sonho;
 import start.Service.SonhoService;
@@ -32,9 +33,12 @@ public class SonhoController {
         return sonhoService.findById(id);
     }
 
-    @PostMapping("/")
-    public Sonho createSonho(@RequestBody Sonho sonho) {
-        return sonhoService.createSonho(sonho);
+    @PostMapping // acho que tem algum erro nessa classe //
+    public ModelAndView createSonho(@RequestBody Sonho sonho) {
+        Sonho novoSonho = sonhoService.createSonho(sonho);
+        ModelAndView mav = new ModelAndView("gestaodesonhos");
+        mav.addObject("sonho", novoSonho);
+        return mav;
     }
 
     @PutMapping("/{id}")

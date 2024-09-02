@@ -1,34 +1,34 @@
 package start.Service;
 
-import start.Model.GerenciadoraMensal;
-import start.Repository.GerenciadoraMensalRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import start.Model.GerenciadoraMensal;
+import start.Repository.GerenciadoraMensalRepository;
+
 @Service
 public class GerenciadoraMensalService {
-    
-        @Autowired
-        private GerenciadoraMensalRepository gerenciadoraMensalRepository;
-    
-        /* public List<GerenciadoraMensal> buscarPorMes(int month) {
+
+    @Autowired
+    private GerenciadoraMensalRepository gerenciadoraMensalRepository;
+
+    /* public List<GerenciadoraMensal> buscarPorMes(int month) {
             return gerenciadoraMensalRepository.findByMasAnoMonth(month);
         }
     
         public List<GerenciadoraMensal> buscarPorAno(int year) {
             return gerenciadoraMensalRepository.findByMasAnoYear(year);
         }
-    */
-        public List<GerenciadoraMensal> buscarPorMesEAno(YearMonth masAno) {
-            return gerenciadoraMensalRepository.findByMasAno(masAno);
-        }
+     */
+    public List<GerenciadoraMensal> buscarPorMesEAno(YearMonth masAno) {
+        return gerenciadoraMensalRepository.findByMasAno(masAno);
+    }
 
-        // Método para criar um novo registro de GerenciadoraMensal
+    // Método para criar um novo registro de GerenciadoraMensal
     public GerenciadoraMensal criarGerenciadoraMensal(GerenciadoraMensal gerenciadoraMensal) {
         return gerenciadoraMensalRepository.save(gerenciadoraMensal);
     }

@@ -145,11 +145,14 @@
                 <section>
                     <div class="alinhar-imagem-bloco">
                         <img src="imagens/Design sem nome (8) 1.png" alt="">
-                        <form th:action="@{/sonho}" class="forms-sonho" id="forms-sonho" th:object="${sonho}" method="post">
-                            <div class=""> <!-- fazer dessa classe a classe que vai organizar-->
+                        <form th:action="@{/sonho}" class="forms-sonho" id="forms-sonho" th:object="${sonho}" method="get">
+
+                            <div class="container-sonho">
+
                                 <div class="title-sonho">
                                     <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>
                                 </div>
+
                                 <div class="inserir-sonho">
                                     <label for="dream" class="diminuir-fonte">Sonho:</label>
                                     <input type="text" id="dream" name="dream" class="color-mudar"
@@ -165,9 +168,11 @@
                                     <label for="prazo" class="diminuir-fonte">Prazo:</label>
                                     <input type="date" id="prazo" name="prazo" class="color-mudar" th:field="*{prazo}">
                                 </div>
+
                             </div>
-                            <div>
-                                <a href="/gestaodesonho.html"><button class="botao-forms-sonho" type="submit"> Simule </button></a>
+
+                            <div class="submit-sonho">
+                                <button class="botao-forms-sonho" type="submit">SIMULE</button>
                             </div>
                         </form>
                     </div>
