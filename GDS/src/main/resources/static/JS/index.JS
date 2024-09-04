@@ -65,7 +65,7 @@ class FormsSonho {
 
 document.addEventListener("DOMContentLoaded", () => {
     const formsSonho = new FormsSonho({
-        form: "#forms-sonho",
+        form: "forms-sonho",
         button: "button[type='submit']", 
         success: "<h1 class='success'>Login realizado com sucesso!</h1>",
         error: "<h1 class='error'>Erro ao realizar login.</h1>",

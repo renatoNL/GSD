@@ -33,7 +33,7 @@ public class SonhoController {
         return sonhoService.findById(id);
     }
 
-    @PostMapping // acho que tem algum erro nessa classe //
+    @PostMapping("/createsonho")// acho que tem algum erro nessa classe //
     public ModelAndView createSonho(@RequestBody Sonho sonho) {
         Sonho novoSonho = sonhoService.createSonho(sonho);
         ModelAndView mav = new ModelAndView("gestaodesonhos");

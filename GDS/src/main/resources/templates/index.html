@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Sonhos</title>
-    <link rel="website icon" type="png" href="imagens/logo-removebg-preview.png"> <!-- ajeitar o tamanho da logo -->
-    <link th:href="@{../static/css/index.css}" href="../static/css/index.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" th:src="@{../JS/index.JS}"></script>
+    <link rel="website icon" type="png" th:href="@{logoRemove}"> <!-- ajeitar o tamanho da logo -->
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/JS/index.JS}"></script>
 </head>
 
 <body>
@@ -17,8 +17,8 @@
         <nav>
             <ul>
                 <li>
-                    <a href="index.html"> <img src="./imagens/logo-removebg-preview.png" alt="Logo" height="50"
-                            class="d-inline-block align-text-top"> </a> <!-- add a logo -->
+                    <a th:href="@{/}"> <img th:src="${logoRemove}" alt="Logo" height="50"
+                                               class="d-inline-block align-text-top"> </a> <!-- add a logo -->
                 </li>
                 <div class="agrupamento">
                     <li>
@@ -41,7 +41,7 @@
                     </li>
                 </div>
                 <li class="loginBotao">
-                    <a href="login.html"> <button> <img src="imagens/pngwing.com(1) 1.png"> Entrar </button> </a>
+                    <a href="login.html"> <button> <img th:src="@{pngwing}"> Entrar </button> </a>
                 </li>
             </ul>
         </nav>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="center">
-            <img src="./imagens/file.png"></img>
+            <img src="../static/imagens/file.png"></img>
 
         </div>
     </header>
@@ -87,7 +87,7 @@
                             e no longo prazo. </p>
                     </div>
 
-                    <img src="imagens/Design sem nome (6) 1.png" alt="">
+                    <img src="../static/imagens/Design sem nome (6) 1.png" alt="">
 
                 </div>
                 <br>
@@ -100,7 +100,7 @@
                 <section class="bloquinho">
 
                     <div>
-                        <img src="imagens/Design sem nome (23) 1.png" alt="">
+                        <img src="../static/imagens/Design sem nome (23) 1.png" alt="">
 
                         <h4> Organização Eficiente </h4> <!-- add uma imagem -->
 
@@ -115,7 +115,7 @@
                 </section>
                 <section class="bloquinho">
                     <div>
-                        <img src="imagens/Design sem nome (9) 1.png" alt="">
+                        <img src="../static/imagens/Design sem nome (9) 1.png" alt="">
                         <h4> Acompanhe seus sonhos </h4> <!-- add uma imagem -->
 
                         <p class="text-bloco"> Faça um acompanhamento detalhado de suas <!-- como diminuir a fonte -->
@@ -144,8 +144,8 @@
             <div>
                 <section>
                     <div class="alinhar-imagem-bloco">
-                        <img src="imagens/Design sem nome (8) 1.png" alt="">
-                        <form th:action="@{/sonho}" class="forms-sonho" id="forms-sonho" th:object="${sonho}" method="get">
+                        <img src="../static/imagens/img1.png" alt="">
+                        <form th:action="@{/sonho/createsonho}" class="forms-sonho" id="forms-sonho" th:object="${sonho}" method="post">
 
                             <div class="container-sonho">
 
@@ -155,8 +155,7 @@
 
                                 <div class="inserir-sonho">
                                     <label for="dream" class="diminuir-fonte">Sonho:</label>
-                                    <input type="text" id="dream" name="dream" class="color-mudar"
-                                        th:field="*{descricao}">
+                                    <input type="text" id="dream" name="dream" class="color-mudar" th:field="*{descricao}">
                                 </div>
 
                                 <div class="inserir-sonho">
@@ -172,7 +171,7 @@
                             </div>
 
                             <div class="submit-sonho">
-                                <button class="botao-forms-sonho" type="submit">SIMULE</button>
+                                <button class="botao-forms-sonho" type="submit" href="gestao-sonhos">SIMULE</button>
                             </div>
                         </form>
                     </div>

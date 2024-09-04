@@ -37,6 +37,7 @@ body {
     color: black;
     background-color: #f0f0f0;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 ul {
@@ -79,6 +80,11 @@ h1 {
     color: #376721;
 
     text-align: center;
+}
+
+h2 {
+    color: #376721;
+    margin-bottom: 20px;
 }
 
 h3 {
@@ -148,6 +154,7 @@ footer {
     padding: 20px;
     height: 70px;
     justify-content: center;
+    margin-top: 90px;
 }
 
 
@@ -242,6 +249,7 @@ p {
     margin-bottom: 50px;
     box-shadow: rgba(0, 0, 0, 0.788) 2px 2px 2px;
     
+    display: grid;
 
 
     & .title-sonho {
@@ -302,8 +310,10 @@ p {
 .alinhar-imagem-bloco {
     display: flex;
     align-items: center;
-    
     justify-content: space-evenly;
+    flex-direction: row-reverse;
+    margin-top: 5vw;
+
 }
 
 .gerenciadora-titulo { /* como que deixa isso alinhado ao centro */
@@ -316,4 +326,17 @@ p {
 
 .espaço {
     margin-top: 60px;
+}
+
+.alinhar-texto{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin-top: 60px;
+}
+
+.tamanho-texto{
+    width: 60%;
 }

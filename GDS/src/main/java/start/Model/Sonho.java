@@ -1,5 +1,7 @@
 package start.Model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -8,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_Sonho")
@@ -33,6 +34,11 @@ public class Sonho {
         this.valor = valor;
         this.prazo = prazo;
         this.usuario = usuario;
+    }
+    public Sonho(String descricao, double valor, LocalDate prazo ){
+        this.descricao = descricao;
+        this.valor = valor;
+        this.prazo = prazo;
     }
 
     public Sonho() {
