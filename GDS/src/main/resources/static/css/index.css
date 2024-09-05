@@ -1,0 +1,365 @@
+/* tela inicial */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #D3E9AB;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    display: flex;
+    gap: 20px;
+    background-attachment: fixed;
+}
+
+.dropdown-menu {
+    position: absolute;
+    border: 1px solid black;
+    display: none;
+    background-color: #A2D488;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: black;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+body {
+    color: black;
+    background-color: #f0f0f0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 16px;
+    width: 200%;
+}
+
+.agrupamento {
+    display: flex;
+    gap: 3rem;
+
+}
+
+ul>li>a {
+    display: flex;
+    text-align: center;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    /* para tirar linhas de "links" */
+}
+
+a:hover {
+    display: flex;
+    color: darkgreen;
+    text-decoration: underline;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h1 {
+    width: 100%;
+    max-width: 50rem;
+    color: #376721;
+
+    text-align: center;
+}
+
+h3 {
+    /* como que coloca no meio de um meio da tela? */
+    color: #376721;
+    display: flex;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+.title>h1>span {
+    color: #49A601;
+
+
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+    padding-top: 40px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.center>img {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 500px;
+    height: 310px;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    box-shadow: black;
+}
+
+header {
+    background: linear-gradient(to bottom, #D3E9ABA6, #f0f0f0);
+}
+
+.loginBotao>a>button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    width: 9rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    border: none;
+    background-color: #A2D488;
+}
+
+.loginBotao>a>button>img {
+    width: 45px;
+}
+
+footer {
+    display: flex;
+    background-color: #D3E9AB;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    padding: 20px;
+    height: 70px;
+    justify-content: center;
+}
+
+
+.plano-financeiro {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.plano-financeiro p {
+    top: 0%;
+}
+
+p {
+    margin: 0px 150px;
+}
+
+.planer-finaceiro-color {
+    background: linear-gradient(to bottom, #f0f0f0, #D3E9ABA6, #f0f0f0);
+    width: 100%;
+
+}
+
+.div-p h3 {
+    margin-left: 150px;
+}
+
+.botao1 {
+    background-color: #2B8F6F;
+    width: 150px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.botaozin1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.botao1:hover {
+    background-color: #8afd32;
+    transform: scale(1.05);
+}
+
+.bloquinho {
+    
+    display: flex;
+    margin-top: 100px;
+    /* tirar isso daqui quando ajeitar o botao */
+    border: 1px solid black;
+    align-items: center;
+    text-align: center;
+    border-radius: 30px;
+    width: 450px;
+    height: 500px;
+    background-color: #C5E1C8;
+    scroll-margin-block-end: 3000rem;
+    margin-bottom: 60px;
+
+    & .text-bloco {
+        margin: 20px 40px;
+    }
+}
+
+.main-alinhar-bloquinhos-ao-centro {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.do-planer{
+    margin-top: 180px;
+    margin-left: 250px;
+}
+
+.forms-sonho {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    width: 350px;
+    height: 400px;
+    background-color: #C5E1C8;
+    margin-bottom: 50px;
+    box-shadow: rgba(0, 0, 0, 0.788) 2px 2px 2px;
+    
+
+
+    & .title-sonho {
+        font-size: 18px;
+        width: 250px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 45px;
+    }
+
+    & .inserir-sonho {
+        display: flex;
+        flex-direction: column;
+
+        text-align: start;
+        width: 207px;
+
+        margin-bottom: 30px;
+
+    }
+
+    & .inserir-sonho>input {
+        border-radius: 7px;
+        height: 25px;
+        box-shadow: rgba(0, 0, 0, 0.479) 3px 3px 3px;
+    }
+
+    & .color-mudar {
+        background-color: #c9c9c9a6;
+        
+    }
+
+    & .color-mudar:focus {
+        background-color: #f0f0f0;
+    }
+
+
+
+    & .botao-forms-sonho {
+        border: 1px solid black;
+        border-radius: 30px;
+        width: 100px;
+        height: 35px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: rgba(0, 0, 0, 0.788) 2px 2px 2px;
+    }
+
+    & .botao-forms-sonho:hover {
+        background-color: #2B8F6F;
+        transform: scale(1.05);
+    }
+
+    & .diminuir-fonte {
+        font-size: 12px;
+    }
+
+}
+.alinhar-imagem-bloco {
+    display: flex;
+    align-items: center;
+    
+    justify-content: space-evenly;
+}
+
+.gerenciadora-titulo { /* como que deixa isso alinhado ao centro */
+    display: flex;
+    margin: 100px 200px;
+    text-align: center;
+    
+    color: black;
+}
+
+.espaço {
+    margin-top: 60px;
+    
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 5px 0;
+    }
+
+    .main-alinhar-bloquinhos-ao-centro {
+        flex-direction: column;
+    }
+
+    .plano-financeiro {
+        flex-direction: column;
+    }
+
+    footer ul {
+        flex-direction: column;
+    }
+}

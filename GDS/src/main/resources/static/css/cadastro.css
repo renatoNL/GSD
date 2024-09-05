@@ -1,0 +1,25 @@
+body{
+    background-color: #f0f0f0;
+}
+
+form{
+    
+    border: 1px solid black;
+    border-radius: 5px ;
+    background-color: #D5EFB0;
+    width: 400px;
+    height: 400px;
+
+    & .alinhar-inputs-cadastro{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    & .colocar-meio-cadastro{
+        
+    }
+}
+

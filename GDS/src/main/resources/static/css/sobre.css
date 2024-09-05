@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #376721;
+      padding-left: 50px;
+      height: 55px;
+
+
+&.left {
+    text-align: left;
+}
+
+&.right {
+    text-align: right;
+    margin-right: 700px;
+    transform: translateY(-400px);
+}
+}
+
+p {
+    margin-top: 0,5px;
+    
+&.left2 {
+    text-align: left;
+    padding-left: 50px;
+    width: 650px;
+}   
+
+&.teste2 {
+    display: flex;
+    text-align: left;
+    transform: translateY(-400px);
+    padding-left: 750px;
+    padding-right: 50px;
+}
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    background-color: #D3E9AB;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    display: flex;
+    gap: 20px;
+    background-attachment: fixed;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 16px;
+    width: 200%;
+}
+
+.agrupamento {
+    display: flex;
+    gap: 3rem;
+
+}
+
+ul>li>a {
+    display: flex;
+    text-align: center;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    /* para tirar linhas de "links" */
+}
+
+a:hover {
+    display: flex;
+    color: darkgreen;
+    text-decoration: underline;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.loginBotao>a>button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    width: 9rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    border: none;
+    background-color: #A2D488;
+}
+
+.loginBotao>a>button>img {
+    width: 45px;
+}
+
+footer {
+    display: flex;
+    background-color: #D3E9AB;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    padding: 20px;
+    height: 70px;
+    justify-content: center;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro</title>
+    <link th:href="@{../static/css/provisorio.css}" href="../static/css/provisorio.css" rel="stylesheet" type="text/css" />>
+</head>
+<body>
+    <div class="colocar-meio-cadastro">
+        <form th:action="@{/auth/register}" method="post">
+            <div>
+                <h3>CADASTRO</h3>
+            </div>
+            <div class="alinhar-inputs-cadastro">
+                <label>Nome Completo</label>
+                <input type="text">
+                <label> Número de celular </label>
+                <input type="tel">
+                <label> Data de Nascimento </label>
+                <input type="date">
+                <label>CPF</label>
+                <input type="tel">
+                <label>Email</label>
+                <input type="email" name="email">
+                <label>Senha</label>
+                <input type="password" name="password">
+            </div>
+            <button type="submit">Continuar</button>
+            <button> Google </button>
+            <button> Microsoft </button>
+        </form>
+    </div>
+</body>
+</html>

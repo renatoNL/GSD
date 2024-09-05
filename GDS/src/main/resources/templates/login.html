@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gestão de Sonhos</title>
+    <link rel="stylesheet" href="login.css">
+    <link th:href="@{../static/css/login.css}" href="../static/css/login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div>
+        <section class="suporte-login"></section>
+    </div>
+    <div class="alinhar-forms">
+        <h2>Conecte-se à Gestão de Sonhos</h2>
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p> <!-- Exibe a mensagem de erro -->
+        </div>
+        <form th:action="@{/auth/login}" method="post">
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <p>Não tem uma conta? <a th:href="@{/auth/register}">Registre-se</a></p>
+    </div>
+</body>
+</html>

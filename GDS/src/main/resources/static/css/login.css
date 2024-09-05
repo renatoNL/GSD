@@ -1,0 +1,73 @@
+body {
+    background-color: #f0f0f0;
+}
+
+.forms-login {
+    display: flex;
+    background-color: #D5EFB0;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 350px;
+    height: 400px;
+
+
+
+    text-align: center;
+
+    /* justify-content: center; */
+    flex-direction: column;
+
+
+
+
+    & .h3>form {
+        color: aliceblue;
+    }
+
+    & .alinhar-forms {
+
+        /* to panhando para colocar isso no centro da tela */
+
+    }
+
+    & .alinhar-inputs-login {
+        margin-bottom: 20px;
+        
+    }
+
+    & .arredondar-input{
+        border-radius: 5px;
+        height: 17px;
+    }
+
+    & .alinnhar-ao-centro {
+        justify-content: flex-end;
+    }
+
+    & .suporte-login {
+        border: 1px solid black;
+        justify-content: space-around;
+    }
+
+    & .criar-conta-login {
+        color: black;
+        text-decoration: none;
+    }
+
+    & .criar-conta-login:hover {
+        color: blue;
+    }
+
+    & .entrar-bot-login {
+        color: black;
+        font-size: 13px;
+        width: 90px;
+        height: 40px;
+        border-radius: 5px;
+    }
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
