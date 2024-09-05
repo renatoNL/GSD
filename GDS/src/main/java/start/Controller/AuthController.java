@@ -1,15 +1,14 @@
 package start.Controller;
-/*
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpSession;
 import start.Infra.Segurity.TokenService;
 import start.Model.UsuarioModel;
 import start.Repository.UsuarioRepository;
@@ -17,42 +16,64 @@ import start.dto.LoginRequestDTO;
 import start.dto.RegisterRequestDTO;
 import start.dto.ResponseDTO;
 
-@RestController
+@Controller
 @RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
-    private UsuarioRepository repository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
     private TokenService tokenService;
 
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody LoginRequestDTO body){
-        UsuarioModel usuarioModel = this.repository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("User not found"));
-        if(passwordEncoder.matches(body.password(), usuarioModel.getPassword())) {
-            String token = this.tokenService.generateToken(usuarioModel);
-            return ResponseEntity.ok(new ResponseDTO(usuarioModel.getName(), token));
-        }
-        return ResponseEntity.badRequest().build();
-    }
-    
-    @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterRequestDTO body){
-        Optional<UsuarioModel> usuarioModel = this.repository.findByEmail(body.email());
-        if(usuarioModel.isEmpty()) {
-            UsuarioModel newUsuario = new UsuarioModel();
-            newUsuario.setPassword(passwordEncoder.encode(body.password()));
-            newUsuario.setEmail(body.email());
-            newUsuario.setName(body.name());
-            this.repository.save(newUsuario);
-    
-            String token = this.tokenService.generateToken(newUsuario);
-            return ResponseEntity.ok(new ResponseDTO(newUsuario.getName(), token));
-        }
-        return ResponseEntity.badRequest().build();
+    @Autowired
+    private UsuarioRepository repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
     }
 
+    @PostMapping("/login")
+public String login(@RequestParam String email, @RequestParam String password, Model model) {
+    try {
+        UsuarioModel usuario = repository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        if (passwordEncoder.matches(password, usuario.getPassword())) {
+            String token = tokenService.generateToken(usuario);
+            return "redirect:/servicos";
+        } else {
+            model.addAttribute("error", "Email ou senha incorretos");
+            return "login";
+        }
+    } catch (RuntimeException e) {
+        model.addAttribute("error", "Email ou senha incorretos");
+        return "login";
+    }
 }
-*/
+
+    @PostMapping("/register")
+    public ResponseEntity<Void> register(@RequestBody RegisterRequestDTO data) {
+        if(this.repository.findByEmail(data.email()).isPresent()) return ResponseEntity.badRequest().build();
+
+        String encryptedPassword = passwordEncoder.encode(data.password());
+        UsuarioModel newUser = new UsuarioModel();
+        newUser.setName(data.name());
+        newUser.setEmail(data.email());
+        newUser.setPassword(encryptedPassword);
+        newUser.setCpf(data.cpf());
+        newUser.setDataNascimento(data.dataNascimento());
+        newUser.setCelular(data.celular());
+
+        this.repository.save(newUser);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/register")
+    public String registerPage() {
+        return "cadastro";
+    }
+}
+

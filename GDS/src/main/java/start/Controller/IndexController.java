@@ -14,6 +14,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
+<<<<<<< HEAD
         Map<String, String> imageMap = new HashMap<>();
         Sonho sonho = new Sonho();
         
@@ -25,6 +26,9 @@ public class IndexController {
         model.addAttribute("designSemNome6", "/imagens/Design sem nome (6) 1.png");
         model.addAttribute("designSemNome23", "/imagens/Design sem nome (23) 1.png");
         model.addAttribute("designSemNome9", "/imagens/Design sem nome (9) 1.png");
+=======
+        model.addAttribute("sonho", new Sonho());
+>>>>>>> 4b7b6820be166b090b0ab84e2787dd868eaeeeca
         return "index";
     }
 

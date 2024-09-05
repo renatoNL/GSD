@@ -1,6 +1,5 @@
 package start.Infra.Segurity;
 
-/* 
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +24,3 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(usuarioModel.getEmail(), usuarioModel.getPassword(), new ArrayList<>());
     }
 }
-*/
