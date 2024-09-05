@@ -12,7 +12,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-
+        model.addAttribute("sonho", new Sonho());
         return "index";
     }
 
