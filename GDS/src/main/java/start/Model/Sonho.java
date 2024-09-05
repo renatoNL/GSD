@@ -35,6 +35,7 @@ public class Sonho {
         this.prazo = prazo;
         this.usuario = usuario;
     }
+    
     public Sonho(String descricao, double valor, LocalDate prazo ){
         this.descricao = descricao;
         this.valor = valor;
