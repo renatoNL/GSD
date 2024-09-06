@@ -8,17 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Sonhos</title>
     <link rel="website icon" type="png" th:href="@{logoRemove}"> <!-- ajeitar o tamanho da logo -->
-    <link th:href="@{/css/index.css}" rel="stylesheet"/>
-    <script type="text/javascript" th:src="@{/JS/index.JS}"></script>
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
 </head>
 
 <body>
     <div>
         <nav>
-            <ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="menu">
                 <li>
                     <a th:href="@{/}"> <img th:src="${logoRemove}" alt="Logo" height="50"
+<<<<<<< HEAD
+                            class="d-inline-block align-text-top"> </a> <!-- add a logo -->
+=======
                                             class="d-inline-block align-text-top"> </a> <!-- add a logo -->
+>>>>>>> 4b7b6820be166b090b0ab84e2787dd868eaeeeca
                 </li>
                 <div class="agrupamento">
                     <li>
@@ -30,7 +38,7 @@
                     <li class="dropdown">
                         <a> Ferramentas </a> <!-- add efeito on click e aparecer as ferramentas -->
                         <div class="dropdown-menu">
-                            <a href="gestaodesonhos.html">Gestão de Sonhos</a>
+                            <a th:href="@{gestao-sonhos}">Gestão de Sonhos</a>
                             <a href="gestaomensal.html">Planejamento mensal</a>
                             <a href="quitacao.html">Quitação</a>
                             <a href="investir.html">Investir</a>
@@ -41,7 +49,11 @@
                     </li>
                 </div>
                 <li class="loginBotao">
+<<<<<<< HEAD
+                    <a href="login.html"> <button> <img th:src="${pngwing}" alt="Login Icon"> Entrar </button> </a>
+=======
                     <a th:href="@{/auth/login}"> <button> <img th:src="@{pngwing}"> Entrar </button> </a>
+>>>>>>> 4b7b6820be166b090b0ab84e2787dd868eaeeeca
                 </li>
             </ul>
         </nav>
@@ -59,7 +71,7 @@
         </div>
 
         <div class="center">
-            <img src="../static/imagens/file.png"></img>
+            <img th:src="${file}" alt="File Image"></img>
 
         </div>
     </header>
@@ -87,7 +99,7 @@
                             e no longo prazo. </p>
                     </div>
 
-                    <img src="../static/imagens/Design sem nome (6) 1.png" alt="">
+                    <img th:src="${designSemNome6}" alt="Design Sem Nome 6">
 
                 </div>
                 <br>
@@ -100,7 +112,7 @@
                 <section class="bloquinho">
 
                     <div>
-                        <img src="../static/imagens/Design sem nome (23) 1.png" alt="">
+                        <img th:src="${designSemNome23}" alt="Design Sem Nome 23">
 
                         <h4> Organização Eficiente </h4> <!-- add uma imagem -->
 
@@ -115,7 +127,7 @@
                 </section>
                 <section class="bloquinho">
                     <div>
-                        <img src="../static/imagens/Design sem nome (9) 1.png" alt="">
+                        <img th:src="${designSemNome9}" alt="Design Sem Nome 9">
                         <h4> Acompanhe seus sonhos </h4> <!-- add uma imagem -->
 
                         <p class="text-bloco"> Faça um acompanhamento detalhado de suas <!-- como diminuir a fonte -->
@@ -144,36 +156,32 @@
             <div>
                 <section>
                     <div class="alinhar-imagem-bloco">
-                        <img src="../static/imagens/img1.png" alt="">
-                        <form th:action="@{/sonho/createsonho}" class="forms-sonho" id="forms-sonho" th:object="${sonho}" method="post">
-
+                        <img th:src="${designSemNome}" alt="Design Sem Nome">
+                        <form th:action="@{/sonho/createsonho}" class="forms-sonho" id="forms-sonho"
+                            th:object="${sonho}" method="post">
                             <div class="container-sonho">
-
                                 <div class="title-sonho">
                                     <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>
                                 </div>
-
                                 <div class="inserir-sonho">
                                     <label for="dream" class="diminuir-fonte">Sonho:</label>
-                                    <input type="text" id="dream" name="dream" class="color-mudar" th:field="*{descricao}">
+                                    <input type="text" id="dream" name="dream" class="color-mudar"
+                                        th:field="*{descricao}">
                                 </div>
-
                                 <div class="inserir-sonho">
                                     <label for="valor" class="diminuir-fonte">Valor:</label>
                                     <input type="text" id="valor" name="valor" class="color-mudar" th:field="*{valor}">
                                 </div>
-
                                 <div class="inserir-sonho">
                                     <label for="prazo" class="diminuir-fonte">Prazo:</label>
                                     <input type="date" id="prazo" name="prazo" class="color-mudar" th:field="*{prazo}">
                                 </div>
-
                             </div>
-
                             <div class="submit-sonho">
-                                <button class="botao-forms-sonho" type="submit" href="gestao-sonhos">SIMULE</button>
+                                <button class="botao-forms-sonho" type="submit">SIMULE</button>
                             </div>
                         </form>
+
                     </div>
 
                 </section>
@@ -201,6 +209,105 @@
             </ul>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formSonho = document.getElementById('forms-sonho');
+
+            formSonho.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const descricao = document.getElementById('dream').value;
+                const valor = document.getElementById('valor').value;
+                const prazo = document.getElementById('prazo').value;
+
+                const sonho = {
+                    descricao: descricao,
+                    valor: parseFloat(valor),
+                    prazo: prazo
+                };
+
+                fetch('/sonho/createsonho', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sonho)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Sonho criado:', data);
+                        // Aqui você pode adicionar lógica para atualizar a interface do usuário
+                    })
+                    .catch(error => {
+                        console.error('Erro ao criar sonho:', error);
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formSonho = document.getElementById('forms-sonho');
+
+            formSonho.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(formSonho);
+                const sonho = Object.fromEntries(formData.entries());
+
+                fetch('/sonho/createsonho', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sonho)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        window.location.href = '/gestaodesonhos?id=' + data.id;
+                    })
+                    .catch(error => {
+                        console.error('Erro ao criar sonho:', error);
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formSonho = document.getElementById('forms-sonho');
+
+            formSonho.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(formSonho);
+                const sonho = Object.fromEntries(formData.entries());
+
+                fetch('/sonho/createsonho', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sonho)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        window.location.href = '/gestao-sonhos?id=' + data.id;
+                    })
+                    .catch(error => {
+                        console.error('Erro ao criar sonho:', error);
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
 
 </body>
 

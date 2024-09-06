@@ -46,8 +46,8 @@
     <div>
         <section>
             <div class="alinhar-imagem-bloco">
-                <img th:src="${designSemNome}" alt="">
-                <form th:action="@{/sonho/createsonho}" class="forms-sonho" th:object="${sonho}" method="post">
+                <img tsrc="${sonho != null ? '/images/' + sonho.descricao + '.jpg' : designSemNome}" alt="">
+                <form th:action="@{/sonho/updatesonho}" class="forms-sonho" th:object="${sonho}" method="post">
                     <div class=""> <!-- fazer dessa classe a classe que vai organizar-->
                         <div class="title-sonho">
                             <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>

@@ -272,6 +272,7 @@ p {
 
     & .color-mudar {
         background-color: #c9c9c9a6;
+        
     }
 
     & .color-mudar:focus {
@@ -319,3 +320,46 @@ p {
     
 }
 
+@media screen and (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 5px 0;
+    }
+
+    .main-alinhar-bloquinhos-ao-centro {
+        flex-direction: column;
+    }
+
+    .plano-financeiro {
+        flex-direction: column;
+    }
+
+    footer ul {
+        flex-direction: column;
+    }
+}
