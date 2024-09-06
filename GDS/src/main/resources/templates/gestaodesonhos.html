@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Sonhos</title> <!-- Se muda o nome da pagina de acordo com a mudança de paginas? -->
     <link rel="website icon" type="png" th:href="@{logoRemove}"> <!-- ajeitar o tamanho da logo -->
-    <link th:href="@{/css/gestaodesonhos.css}"  rel="stylesheet" />
+    <link th:href="@{/css/gestaodesonhos.css}" rel="stylesheet" />
 
 </head>
 
@@ -17,7 +17,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="index.html"> <img th:src="${logoRemove}" alt="Logo" height="50"
+                    <a th:href="@{/}"> <img th:src="${logoRemove}" alt="Logo" height="50"
                             class="d-inline-block align-text-top"> </a> <!-- add a logo -->
                 </li>
                 <div class="agrupamento">
@@ -52,7 +52,9 @@
                         <div class="title-sonho">
                             <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>
                         </div>
+                        <input type="hidden" name="id" th:field="*{id}">
                         <div class="inserir-sonho">
+
                             <label for="dream" class="diminuir-fonte">Sonho:</label>
                             <input type="text" id="dream" name="dream" class="color-mudar" th:field="*{descricao}">
                         </div>
@@ -76,7 +78,7 @@
         <section>
             <div class="alinhar-texto">
                 <h2> O que é a gerenciadora de sonhos </h2>
-                
+
                 <div class="tamanho-texto">
                     <p> O gerenciamento de sonhos financeiros envolve a habilidade de visualizar e planejar metas
                         financeiras de
@@ -116,6 +118,41 @@
         </ul>
     </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.forms-sonho');
+            const resultDiv = document.createElement('div');
+            resultDiv.id = 'result';
+            form.after(resultDiv);
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const sonhoId = formData.get('id'); // Assuming you have an input field for the sonho ID
+
+                fetch(`/sonho/${sonhoId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        resultDiv.innerHTML = `
+                        <h3>Resultado da Simulação:</h3>
+                        <p>Descrição: ${data.descricao}</p>
+                        <p>Valor: R$ ${data.valor.toFixed(2)}</p>
+                        <p>Prazo: ${new Date(data.prazo).toLocaleDateString()}</p>
+                    `;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        resultDiv.innerHTML = '<p>Sonho cadastrado</p>';
+                    });
+            });
+        });
+    </script>
 
 </body>
 

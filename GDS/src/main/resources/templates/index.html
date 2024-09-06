@@ -219,11 +219,7 @@
                     prazo: prazo
                 };
 
-                fetch('/sonho/createsonho', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                
                     body: JSON.stringify(sonho)
                 })
                     .then(response => response.json())
@@ -235,35 +231,7 @@
                         console.error('Erro ao criar sonho:', error);
                     });
             });
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const formSonho = document.getElementById('forms-sonho');
-
-            formSonho.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(formSonho);
-                const sonho = Object.fromEntries(formData.entries());
-
-                fetch('/sonho/createsonho', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(sonho)
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        window.location.href = '/gestaodesonhos?id=' + data.id;
-                    })
-                    .catch(error => {
-                        console.error('Erro ao criar sonho:', error);
-                    });
-            });
-        });
+        
     </script>
 
     <script>
