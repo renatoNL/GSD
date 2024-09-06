@@ -28,8 +28,6 @@ public class IndexController {
         return "index";
     }
 
-
-
     @GetMapping("/gestao-sonhos")
     public String gestaoSonhos(Model model) {
         Map<String, String> imageMap = new HashMap<>();

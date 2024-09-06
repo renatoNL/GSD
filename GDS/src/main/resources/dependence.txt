@@ -1,4 +1,3 @@
-        
 spring.datasource.url=jdbc:postgresql://junction.proxy.rlwy.net:50503/railway
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.datasource.username=postgres
