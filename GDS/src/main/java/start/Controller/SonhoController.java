@@ -1,6 +1,7 @@
 package start.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,12 @@ public class SonhoController {
         return sonhoService.findById(id);
     }
 
+    @PostMapping("/simular")
+    public ResponseEntity<Map<String, Double>> simularSonho(@RequestBody Sonho sonho) {
+        Map<String, Double> resultado = sonhoService.simularInvestimento(sonho);
+        return ResponseEntity.ok(resultado);
+    }
+    
     @PostMapping("/createsonho")
     public ResponseEntity<Sonho> createSonho(@RequestBody Sonho sonho) {
         Sonho novoSonho = sonhoService.createSonho(sonho);

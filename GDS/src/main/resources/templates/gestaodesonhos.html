@@ -17,7 +17,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="index.html"> <img th:src="${logoRemove}" alt="Logo" height="50"
+                    <a th:href="@{/}"> <img th:src="${logoRemove}" alt="Logo" height="50"
                             class="d-inline-block align-text-top"> </a> <!-- add a logo -->
                 </li>
                 <div class="agrupamento">
@@ -47,30 +47,31 @@
         <section>
             <div class="alinhar-imagem-bloco">
                 <img tsrc="${sonho != null ? '/images/' + sonho.descricao + '.jpg' : designSemNome}" alt="">
-                <form th:action="@{/sonho/updatesonho}" class="forms-sonho" th:object="${sonho}" method="post">
-                    <div class=""> <!-- fazer dessa classe a classe que vai organizar-->
-                        <div class="title-sonho">
-                            <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>
-                        </div>
-                        <div class="inserir-sonho">
-                            <label for="dream" class="diminuir-fonte">Sonho:</label>
-                            <input type="text" id="dream" name="dream" class="color-mudar" th:field="*{descricao}">
-                        </div>
-
-                        <div class="inserir-sonho">
-                            <label for="valor" class="diminuir-fonte">Valor:</label>
-                            <input type="text" id="valor" name="valor" class="color-mudar" th:field="*{valor}">
-                        </div>
-
-                        <div class="inserir-sonho">
-                            <label for="prazo" class="diminuir-fonte">Prazo:</label>
-                            <input type="date" id="prazo" name="prazo" class="color-mudar" th:field="*{prazo}">
-                        </div>
+                <form id="sonhoForm" class="forms-sonho">
+                    <div class="title-sonho">
+                        <h3>FAÇA SEUS SONHOS VIRAREM REALIDADE!</h3>
+                    </div>
+                    <div class="inserir-sonho">
+                        <label for="dream" class="diminuir-fonte">Sonho:</label>
+                        <input type="text" id="dream" name="descricao" class="color-mudar">
+                    </div>
+                    <div class="inserir-sonho">
+                        <label for="valor" class="diminuir-fonte">Valor:</label>
+                        <input type="text" id="valor" name="valor" class="color-mudar">
+                    </div>
+                    <div class="inserir-sonho">
+                        <label for="prazo" class="diminuir-fonte">Prazo:</label>
+                        <input type="date" id="prazo" name="prazo" class="color-mudar">
                     </div>
                     <div>
-                        <button class="botao-forms-sonho" type="submit"> Simule </button>
+                        <button class="botao-forms-sonho" type="submit">Simule</button>
                     </div>
                 </form>
+                <div id="resultado" style="display: none;">
+                    <h3>Seu sonho vale ouro mas cabe em seu bolso!</h3>
+                    <p id="investimentoInfo"></p>
+                </div>
+                
             </div>
         </section>
         <section>
@@ -116,6 +117,29 @@
         </ul>
     </footer>
     </div>
+
+    <script>
+        document.getElementById('sonhoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const sonho = Object.fromEntries(formData.entries());
+        
+            fetch('/sonho/simular', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(sonho)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('investimentoInfo').textContent = `Você deverá investir R$ ${data.valorInvestimento.toFixed(2)} por mês para realizar seu sonho.`;
+                document.getElementById('resultado').style.display = 'block';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+        </script>
 
 </body>
 
