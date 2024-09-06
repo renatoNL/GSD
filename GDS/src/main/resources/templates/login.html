@@ -1,46 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gestão de Sonhos</title>
     <link rel="stylesheet" href="login.css">
     <link th:href="@{../static/css/login.css}" href="../static/css/login.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
-
     <div>
         <section class="suporte-login"></section>
     </div>
-
     <div class="alinhar-forms">
-        <form class="forms-login" action="login">
-            <h3> LOGIN </h3>
-            <div class="alinnhar-ao-centro">
-                <div class="alinhar-inputs-login">
-                    <label>Username</label>
-                    <input value="" class="arredondar-input">
-                </div>
-                <div class="alinhar-inputs-login">
-                    <label>Password</label>
-                    <input value="" class="arredondar-input">
-                </div>
-                <div>
-                    <button class="entrar-bot-login"> Entrar </button>
-                </div>
-                <div>
-                   <p>
-                    não tem conta? <span> <a href="cadastro.html" class="criar-conta-login"> criar conta</a> </span>
-                   </p> 
-                        
-                    
-                </div>
-                <!-- o botao nao esta direcionando ao canto correto, só vai para canto nenhum ??? -->
+        <h2>Conecte-se à Gestão de Sonhos</h2>
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p> <!-- Exibe a mensagem de erro -->
+        </div>
+        <form th:action="@{/auth/login}" method="post">
+            <div class="form-group">
+                <label for="username">email:</label>
+                <input type="email" name="email" required>
             </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" name="senha" required>
+            </div>
+            <button type="submit">Entrar</button>
         </form>
+        <p>Não tem uma conta? <a th:href="@{/auth/register}">Registre-se</a></p>
     </div>
 </body>
-
 </html>

@@ -1,58 +1,70 @@
 package start.Controller;
-/*
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import start.Infra.Segurity.TokenService;
+import jakarta.servlet.http.HttpSession;
 import start.Model.UsuarioModel;
 import start.Repository.UsuarioRepository;
-import start.dto.LoginRequestDTO;
-import start.dto.RegisterRequestDTO;
-import start.dto.ResponseDTO;
 
-@RestController
+@Controller
 @RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
     private UsuarioRepository repository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private TokenService tokenService;
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage() {
+        return "cadastro";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute UsuarioModel newUser, RedirectAttributes redirectAttributes, Model model) {
+        if (repository.findByEmail(newUser.getEmail()).isPresent()) {
+            model.addAttribute("error", "Email already registered");
+            return "cadastro";
+        }
+
+        try {
+            repository.save(newUser);
+            redirectAttributes.addFlashAttribute("success", "Registration successful. Please log in.");
+            return "redirect:/auth/login";
+        } catch (Exception e) {
+            model.addAttribute("error", "An error occurred during registration. Please try again.");
+            return "cadastro";
+        }
+    }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody LoginRequestDTO body){
-        UsuarioModel usuarioModel = this.repository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("User not found"));
-        if(passwordEncoder.matches(body.password(), usuarioModel.getPassword())) {
-            String token = this.tokenService.generateToken(usuarioModel);
-            return ResponseEntity.ok(new ResponseDTO(usuarioModel.getName(), token));
-        }
-        return ResponseEntity.badRequest().build();
-    }
+    public String loginUsuario(@ModelAttribute UsuarioModel usuarioLogin, HttpSession sessao, RedirectAttributes atributosRedirecionamento, Model modelo) {
+        UsuarioModel usuario = repository.findByEmail(usuarioLogin.getEmail())
+                .orElse(null);
     
-    @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterRequestDTO body){
-        Optional<UsuarioModel> usuarioModel = this.repository.findByEmail(body.email());
-        if(usuarioModel.isEmpty()) {
-            UsuarioModel newUsuario = new UsuarioModel();
-            newUsuario.setPassword(passwordEncoder.encode(body.password()));
-            newUsuario.setEmail(body.email());
-            newUsuario.setName(body.name());
-            this.repository.save(newUsuario);
-    
-            String token = this.tokenService.generateToken(newUsuario);
-            return ResponseEntity.ok(new ResponseDTO(newUsuario.getName(), token));
+        if (usuario == null) {
+            modelo.addAttribute("erro", "Credenciais inválidas");
+            return "login";
         }
-        return ResponseEntity.badRequest().build();
+    
+        sessao.setAttribute("idUsuario", usuario.getId());
+        atributosRedirecionamento.addFlashAttribute("sucesso", "Login realizado com sucesso");
+        return "redirect:/servicos";
     }
 
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logoutUser(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok("Logout successful");
+    }
 }
-*/
